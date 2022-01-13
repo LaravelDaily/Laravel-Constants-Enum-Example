@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,10 @@ Route::get('/', function () {
 Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('tickets', TicketController::class);
+
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
