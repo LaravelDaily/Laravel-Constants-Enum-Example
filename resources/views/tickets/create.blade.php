@@ -34,9 +34,9 @@
                                 <option disabled hidden {{ old('status') != null ?: 'selected' }}>
                                     {{ __('ticket.select') }}
                                 </option>
-                                @foreach(\App\Helpers\Constant::TICKET_STATUS as $key => $value)
-                                    <option value="{{ $value }}" {{ old('status') != $value ?: 'selected' }}>
-                                        {{ __('ticket.statuses.' . \App\Helpers\Constant::TICKET_STATUS[$key]) }}
+                                @foreach(\App\Helpers\TicketStatus::cases() as $ticketStatus)
+                                    <option value="{{ $ticketStatus->value }}" {{ old('status') != $ticketStatus->value ?: 'selected' }}>
+                                        {{ __('ticket.statuses.' . $ticketStatus->name) }}
                                     </option>
                                 @endforeach
                             </select>

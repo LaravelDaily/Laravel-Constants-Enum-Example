@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Constant;
+use App\Helpers\TicketStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +16,7 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->text('title');
             $table->longText('description');
-            $table->unsignedInteger('status')->default(Constant::TICKET_STATUS['open']);
+            $table->unsignedInteger('status')->default(TicketStatus::Open->value);
             $table->timestamps();
         });
     }

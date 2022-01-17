@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\Constant;
+use App\Helpers\TicketStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,14 +11,15 @@ class Ticket extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'status'];
+    protected $casts = ['status' => TicketStatus::class];
 
     public function getIsOpenAttribute(): bool
     {
-        return (int) $this->status === Constant::TICKET_STATUS['open'];
+        return $this->status == TicketStatus::Open;
     }
 
     public function getIsClosedAttribute(): bool
     {
-        return (int) $this->status === Constant::TICKET_STATUS['closed'];
+        return $this->status == TicketStatus::Closed;
     }
 }

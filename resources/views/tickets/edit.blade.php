@@ -31,12 +31,12 @@
                             <x-label for="status" :value="__('ticket.status')" class="required" />
 
                             <select name="status" id="status" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
-                                <option disabled hidden {{ old('status', $ticket->status) != null ?: 'selected' }}>
+                                <option disabled hidden {{ old('status', $ticket->status->value) != null ?: 'selected' }}>
                                     {{ __('ticket.select') }}
                                 </option>
-                                @foreach(\App\Helpers\Constant::TICKET_STATUS as $key => $value)
-                                    <option value="{{ $value }}" {{ old('status', $ticket->status) != $value ?: 'selected' }}>
-                                        {{ __('ticket.statuses.' . \App\Helpers\Constant::TICKET_STATUS[$key]) }}
+                                @foreach(\App\Helpers\TicketStatus::cases() as $ticketStatus)
+                                    <option value="{{ $ticketStatus->value }}" {{ old('status', $ticket->status->value) != $ticketStatus->value ?: 'selected' }}>
+                                        {{ __('ticket.statuses.' . $ticketStatus->name) }}
                                     </option>
                                 @endforeach
                             </select>
