@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Helpers\Constant;
+use App\Enums\TicketStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TicketFactory extends Factory
@@ -24,7 +24,7 @@ class TicketFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'status' => Constant::TICKET_STATUS['open'],
+                'status' => TicketStatus::Open->value,
             ];
         });
     }
@@ -33,7 +33,7 @@ class TicketFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'status' => Constant::TICKET_STATUS['closed'],
+                'status' => TicketStatus::Closed->value,
             ];
         });
     }
