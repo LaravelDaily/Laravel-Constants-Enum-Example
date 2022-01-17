@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Helpers\Constant;
+use App\Enums\TicketStatus;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
 class StoreTicketRequest extends FormRequest
 {
@@ -28,7 +28,7 @@ class StoreTicketRequest extends FormRequest
         return [
             'title'       => ['required', 'string'],
             'description' => ['required', 'string'],
-            'status'      => ['required', Rule::in(Constant::TICKET_STATUS)],
+            'status'      => ['required', new Enum(TicketStatus::class)],
         ];
     }
 }

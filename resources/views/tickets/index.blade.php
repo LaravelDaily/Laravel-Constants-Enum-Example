@@ -39,9 +39,9 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                         @if($ticket->is_open)
-                                            <span class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 uppercase last:mr-0 mr-1">{{ __( "ticket.statuses.{$ticket->status}" ) }}</span>
+                                            <span class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 uppercase last:mr-0 mr-1">{{ __( "ticket.statuses.{$ticket->status->name}" ) }}</span>
                                         @else
-                                            <span class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full text-blueGray-600 bg-blueGray-200 uppercase last:mr-0 mr-1">{{ __( "ticket.statuses.{$ticket->status}" ) }}</span>
+                                            <span class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full text-blueGray-600 bg-blueGray-200 uppercase last:mr-0 mr-1">{{ __( "ticket.statuses.{$ticket->status->name}" ) }}</span>
                                         @endif
                                     </td>
                                     <td>

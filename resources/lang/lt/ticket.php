@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Constant;
+use App\Enums\TicketStatus;
 
 return [
     // Crud
@@ -26,7 +26,7 @@ return [
         'updated' => 'Kortelė atnaujinta sėkmingai.',
     ],
     'statuses' => [
-        Constant::TICKET_STATUS['closed'] => 'Uždaryta',
-        Constant::TICKET_STATUS['open']   => 'Atvira',
+        TicketStatus::Closed->name => 'Uždaryta',
+        TicketStatus::Open->name   => 'Atvira',
     ],
 ];
